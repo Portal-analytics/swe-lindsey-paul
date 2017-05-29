@@ -13,43 +13,47 @@ class App extends Component {
   constructor (props) {
     super (props);
     this.state = {
-      attribute: quotes,
       currentIndex: 0,
+      count: 0,
     };
   }
 
-  clickRandom(quotes) {
+  clickRandom() {
     this.setState({
-      currentIndex: Math.floor(Math.random() * this.state.attribute.quotes.length)
+      currentIndex: Math.floor(Math.random() * 4),
+      count: this.count + 1, 
     })
 
   }
 
 
-  clickThrough(quotes) {
+  clickThrough() {
     if ( this.state.currentIndex === 4) {
         this.setState( {
           attributes: quotes, 
           currentIndex: 0,
+          count: this.count + 1, 
         })
       }
       else {
         this.setState( {
-          currentIndex: this.state.currentIndex +1
+          currentIndex: this.state.currentIndex +1,
+          count: this.count + 1, 
         }) 
       }
   }
 
-  rotateQuotes(quotes) {
+  rotateQuotes() {
       if ( this.state.currentIndex === 4) {
         this.setState( {
-          attributes: quotes, 
           currentIndex: 0,
+          count: this.count + 1, 
         })
       }
       else {
         this.setState( {
-          currentIndex: this.state.currentIndex +1
+          currentIndex: this.state.currentIndex +1,
+          count: this.count + 1, 
         }) 
       }
   }
@@ -69,7 +73,12 @@ class App extends Component {
         <div className="App-buttons">
           <button className="App-button-quotes-clickthrough" onClick={() => this.clickThrough()}>In Order</button>
           <button className="App-button-quotes-random" onClick={() => this.clickRandom()}>Random</button>
+          <div>Clicks= {this.count}</div>
         </div>
+
+        <div className="App-footer">
+          <h2>Sticky Footer</h2>
+        </div> 
 
 
 
