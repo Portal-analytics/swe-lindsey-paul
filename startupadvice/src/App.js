@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       attribute: quotes,
       currentIndex: 0,
+      numberOfClicks: 0,
     };
   }
 
@@ -51,6 +52,11 @@ class App extends Component {
     })
   }
 
+  count() {
+    this.setState( {
+      numberOfClicks: this.state.numberOfClicks + 1
+    })
+  }
 
   render() {
     return (
@@ -63,10 +69,11 @@ class App extends Component {
           <h1>Great Fucking Startup Advice</h1>
         </div>
         <button className="App-button-quote" onClick={() => this.rotateQuotes()}>{quotes[this.state.currentIndex]}</button>
+        
         <button className="App-button-next" onClick={() => this.rotateBack()}>"Previous Quote"</button>
         <button className="App-button-next" onClick={() => this.rotateQuotes()}>"Next Quote"</button>
         <button className="App-button-random" onClick={() => this.rotateRandom()}>"Random quote"</button>
-        
+        <button className="App-button-count" onClick={() => this.count()}>{this.props.numberOfClicks}</button>
       </div>
     );
   }
