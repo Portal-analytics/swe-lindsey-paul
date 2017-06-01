@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import FlatButton from 'material-ui/FlatButton';
+import * as firebase from 'firebase';
 
 
 let button;
@@ -12,6 +13,10 @@ let descritpion;
 let price;
 var index;
 var contractToEdit;
+var database = firebase.database();
+
+
+
 
 var count = 0;
 class App extends Component {
@@ -100,7 +105,16 @@ class App extends Component {
       ...this.state,  
       list: updatedList
     })
+    this.saveUserData();
+  }
 
+
+  saveUserData(){
+    firebase.database().ref('posts/' + index).set({
+      name: this.state.list.contractName,
+      description: this.state.description, 
+      price: this.state.price,
+    })
   }
 
 
