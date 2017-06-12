@@ -1,6 +1,7 @@
 import React from "react";
-import { Flatlist, Image, StyleSheet, Text, View } from "react-native";
+import { Flatlist, Image, StyleSheet, Text, View, Menu } from "react-native";
 import { NativeRouter, Route, Link } from "react-router-native";
+import SideMenu from "react-native-side-menu";
 
 // Home Component
 const Home = () =>
@@ -31,11 +32,16 @@ export default class App extends React.Component {
               <Text>Home</Text>
             </Link>
             <Link to="/settings" style={styles.navItem}>
-              <Text>Settings</Text>
+              <Image
+                source={require("./Gear.jpg")}
+                style={{ width: 25, height: 25 }}
+              />
             </Link>
+
             <Link to="/profile" style={styles.navItem}>
               <Text>Profile</Text>
             </Link>
+
           </View>
 
           <Route exact path="/" component={Home} />
@@ -51,7 +57,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "lightgreen",
     alignItems: "center",
     justifyContent: "center"
   },
